@@ -23,6 +23,7 @@ async function run() {
         const bookingCollection = database.collection('books');
         const ordersCollection = database.collection('orders');
         const reviewCollection = database.collection('reviews');
+        const messagesCollection = database.collection('messages');
 
 
 
@@ -172,6 +173,17 @@ async function run() {
         app.get('/review', async (req, res) => {
             const cursor = reviewCollection.find({});
             const result = await cursor.toArray();
+            res.json(result);
+        })
+
+        app.get('/messages', async (req, res) => {
+            const cursor = messagesCollection.find({});
+            const result = await cursor.toArray();
+            res.json(result);
+        })
+        app.post('/messages', async (req, res) => {
+            const message = req.body;
+            const result = await messagesCollection.insertOne(message);
             res.json(result);
         })
 

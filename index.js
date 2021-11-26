@@ -197,7 +197,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get('/', (req, res) => {
-    res.send('Hello Welcome to komo bike Service website')
+    res.send('Hello Welcome to komo bike Service website server.')
 })
 
 app.listen(port, () => {
